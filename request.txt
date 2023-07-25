@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>결제페이지(통합결제창_LINK)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"> 
+	<meta http-equiv="Expires" content="-1"> 
+	<meta http-equiv="Pragma" content="no-cache">
+	<script type="application/javascript" src="https://js.tosspayments.com/v1"></script>
+	<!--<script type="application/javascript" src="/js/toss-v1.js"></script>-->
+</head>
+<body>
+	<script>
+	var tossPayments = TossPayments('test_ck_N5OWRapdA8dnMj6jyYVo1zEqZKLP');
+	var paymentMethod = 'CARD';
+	var paymentData = {"amount":3,"orderId":"sandbox_674xqh929i2-9632","orderName":"test","successUrl":"https://www.cookiepayments.com/payReq/tossreturn","failUrl":"https://www.cookiepayments.com/payReq/tossreturn","customerName":"Jane Doe","customerEmail":"JaneDoe@email.com","customerMobilePhone":"821066380127"};
+	var cancelUrl = "";
+	//tossPayments.requestPayment(paymentMethod, paymentData);
+
+	tossPayments.requestPayment(paymentMethod, paymentData).catch(function (error) {
+		if (error.code === 'USER_CANCEL') {
+
+			if(cancelUrl) { 
+				location.href = cancelUrl;
+			} 
+			//alert('사용자 취소');
+			//location.href='/';
+			// 결제 고객이 결제창을 닫았을 때 에러 처리
+		}
+	});
+
+	</script>
+</body>
+</html>
