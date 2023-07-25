@@ -37,11 +37,11 @@ app.post("/createPayment", async (req, res) => {
       console.log("written");
     });
     app.use(express.static("public"));
-    res.status(200).json({id: orderNumber});
+    res.status(200).json({url: `https://cookiepay.onrender.com/${orderNumber}.html`});
   } catch (error) {
     console.log(error);
     res.status(400).json("Payment Error");
-  }
+  } 
 });
 
 app.listen(5000, () => {
