@@ -1,10 +1,15 @@
 const express = require("express");
+const cors = require('cors')
 const fs = require("fs");
 const axios = require("axios");
+
 const app = express();
+
+app.use(cors())
+app.use(express.json());
+
 require('dotenv').config()
 
-app.use(express.json());
 
 app.post("/createPayment", async (req, res) => {
   try {
