@@ -24,7 +24,7 @@ app.post("/createPayment", async (req, res) => {
       BUYERNAME: buyerName,
       BUYEREMAIL: buyerEmail,
       BUYERPHONE: buyerPhone,
-      RETURNURL: "https://www.google.com",
+      RETURNURL: "https://jamful.vercel.app/success",
     };
 
     const response = await axios.post(
